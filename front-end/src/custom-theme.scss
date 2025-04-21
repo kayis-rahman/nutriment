@@ -1,0 +1,69 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+// Define primary palette
+$primary-palette: mat.m2-define-palette(mat.$m2-indigo-palette);
+
+// Optional: Define accent and warn
+$accent-palette: mat.m2-define-palette(mat.$m2-pink-palette);
+$warn-palette: mat.m2-define-palette(mat.$m2-red-palette);
+
+
+// Define theme
+$my-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  ),
+  typography: mat.m2-define-typography-config(), // still no prefix for this one
+  density: 0,
+));
+
+// Apply all theme styles once globally
+@include mat.all-component-themes($my-theme);
+
+$primary-color: map.get($primary-palette, 500);
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #eceff1;
+}
+
+*, *:focus, *:hover {
+  outline: none !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.timepicker-overlay {
+  z-index: 10000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 10000000 !important;
+}
+
+.done {
+  width: 20px !important;
+  text-align: center !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.mtop-10 {
+  margin-top: 10px;
+}
+

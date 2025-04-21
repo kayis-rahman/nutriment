@@ -1,0 +1,74 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Diet Plan</mat-card-title>
+    <span class="spacer"></span>
+    <button class="float-right" mat-icon-button (click)="generateDiet()"
+            matTooltip="Generate Diet"
+            matTooltipPosition="below">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
+      <!-- Day Column -->
+      <ng-container matColumnDef="day">
+        <th mat-header-cell *matHeaderCellDef> Day</th>
+        <td mat-cell *matCellDef="let element"> {{ element.day }}</td>
+      </ng-container>
+
+      <!-- Meal Type Column -->
+      <ng-container matColumnDef="mealType">
+        <th mat-header-cell *matHeaderCellDef> Meal</th>
+        <td mat-cell *matCellDef="let element"> {{ element.mealType }}</td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description</th>
+        <td mat-cell *matCellDef="let element"> {{ element.description }}</td>
+      </ng-container>
+
+      <!-- Calories -->
+      <ng-container matColumnDef="calories">
+        <th mat-header-cell *matHeaderCellDef> Calories</th>
+        <td mat-cell *matCellDef="let element"> {{ element.calories }}</td>
+      </ng-container>
+
+      <!-- Protein -->
+      <ng-container matColumnDef="protein">
+        <th mat-header-cell *matHeaderCellDef> Protein (g)</th>
+        <td mat-cell *matCellDef="let element"> {{ element.protein }}</td>
+      </ng-container>
+
+      <!-- Carbs -->
+      <ng-container matColumnDef="carbs">
+        <th mat-header-cell *matHeaderCellDef> Carbs (g)</th>
+        <td mat-cell *matCellDef="let element"> {{ element.carbs }}</td>
+      </ng-container>
+
+      <!-- Fats -->
+      <ng-container matColumnDef="fats">
+        <th mat-header-cell *matHeaderCellDef> Fats (g)</th>
+        <td mat-cell *matCellDef="let element"> {{ element.fats }}</td>
+      </ng-container>
+
+      <!-- Prep Time -->
+      <ng-container matColumnDef="prepTime">
+        <th mat-header-cell *matHeaderCellDef> Prep Time</th>
+        <td mat-cell *matCellDef="let element"> {{ element.prepTime }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="noData">
+        <td mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length">
+          No records found. Click the "Generate Diet" button to add some.
+        </td>
+      </ng-container>
+
+      <!-- Header + Row Setup -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-footer-row *matFooterRowDef="['noData']" [hidden]="dataSource.length > 0"></tr>
+    </table>
+
+  </mat-card-content>
+</mat-card>

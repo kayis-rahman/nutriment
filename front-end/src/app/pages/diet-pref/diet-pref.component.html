@@ -1,0 +1,258 @@
+
+<mat-accordion class="example-headers-align" multi>
+  <div class="example-action-buttons">
+    <button mat-flat-button class="mat-primary" (click)="saveAll()">Save All</button>
+    <span class="spacer"></span>
+    <button mat-flat-button (click)="accordion().openAll()">Expand All</button>
+    <button mat-flat-button (click)="accordion().closeAll()">Collapse All</button>
+  </div>
+  <form [formGroup]="formGroup">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Personal data</mat-panel-title>
+        <mat-panel-description>
+          Type your name and age
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-grid-list cols="4" rowHeight="60px">
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <input matInput formControlName="age" placeholder="Age">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender" placeholder="Gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Activity Level</mat-label>
+              <mat-select formControlName="activity" placeholder="Activity Level">
+                <mat-option value="sedentary">🪑 Sedentary (little to no activity)</mat-option>
+                <mat-option value="light">🚶 Light Activity (1–2 days/week)</mat-option>
+                <mat-option value="moderate">🏃 Moderate Activity (3–4 days/week)</mat-option>
+                <mat-option value="active">💪 Active (5–6 days/week)</mat-option>
+                <mat-option value="very_active">🔥 Very Active (Daily intense workouts)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Workout Days per Week</mat-label>
+              <mat-select formControlName="workoutDays" placeholder="Workout Days per Week">
+                <mat-option *ngFor="let day of [0,1,2,3,4,5,6,7]" [value]="day">
+                  {{ day }} day{{ day === 1 ? '' : 's' }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Goal and Targets</mat-panel-title>
+        <mat-panel-description>
+          Set your goal and targets for the diet
+          <mat-icon>assignment_turned_in</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div>
+        <mat-grid-list cols="4" rowHeight="60px">
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Goal</mat-label>
+              <mat-select formControlName="goal" placeholder="Goal">
+                <mat-option value="Build Muscle">🏋️‍♂️ Build Muscle</mat-option>
+                <mat-option value="Lose Weight">💪 Lose Weight</mat-option>
+                <mat-option value="Maintain">🧘‍♀️ Maintain</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <input matInput formControlName="currentWeight" placeholder="Current Weight(Kg)">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <input matInput formControlName="targetWeight" placeholder="Target Weight(Kg)">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <input matInput formControlName="height" placeholder="Height(cm)">
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <button mat-button (click)="saveAll()">Save</button>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Inclusion & Exclusion</mat-panel-title>
+        <mat-panel-description>
+          Set your inclusion & exclusion for the diet
+          <mat-icon>close</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-grid-list cols="4" rowHeight="60px">
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Diet Type</mat-label>
+              <mat-select formControlName="dietType" placeholder="Diet Type">
+                <mat-option value="Vegetarian">🥗 Vegetarian</mat-option>
+                <mat-option value="Vegan">🌱 Vegan</mat-option>
+                <mat-option value="Non-Vegetarian">🍗 Non-Vegetarian</mat-option>
+                <mat-option value="Pescatarian">🐟 Pescatarian</mat-option>
+                <mat-option value="Flexitarian">🍽️ Flexitarian</mat-option>
+                <mat-option value="Ketogenic">🥓 Ketogenic</mat-option>
+                <mat-option value="Paleo">🍖 Paleo</mat-option>
+                <mat-option value="Mediterranean">🍅 Mediterranean</mat-option>
+                <mat-option value="Gluten-Free">🚫🌾 Gluten-Free</mat-option>
+                <mat-option value="DASH">💓 DASH</mat-option>
+                <mat-option value="Low-FODMAP">🧪 Low-FODMAP</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Allergies</mat-label>
+              <mat-select multiple formControlName="allergies" placeholder="Allergies">
+                <mat-option value="Dairy">🥛 Dairy</mat-option>
+                <mat-option value="Eggs">🍳 Eggs</mat-option>
+                <mat-option value="Nuts">🌰 Nuts</mat-option>
+                <mat-option value="Peanuts">🥜 Peanuts</mat-option>
+                <mat-option value="Gluten">🌾 Gluten</mat-option>
+                <mat-option value="Shellfish">🦐 Shellfish</mat-option>
+                <mat-option value="Fish">🐟 Fish</mat-option>
+                <mat-option value="Soy">🌱 Soy</mat-option>
+                <mat-option value="Wheat">🌿 Wheat</mat-option>
+                <mat-option value="Sesame">✨ Sesame</mat-option>
+                <mat-option value="Corn">🌽 Corn</mat-option>
+                <mat-option value="Mustard">🌼 Mustard</mat-option>
+                <mat-option value="Celery">🥬 Celery</mat-option>
+                <mat-option value="Lupin">🫘 Lupin</mat-option>
+                <mat-option value="Sulfites">🧪 Sulfites</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <input matInput formControlName="foodToInclude" placeholder="Food to include">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <input matInput formControlName="foodToExclude" placeholder="Food to exclude">
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <button mat-button (click)="saveAll()">Save</button>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Meal prep & Cuisines</mat-panel-title>
+        <mat-panel-description>
+          Set your meal prep & cuisines for the diet
+          <mat-icon>food</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-grid-list cols="4" rowHeight="60px">
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Preferred Cuisines</mat-label>
+              <mat-select multiple formControlName="cuisines" placeholder="Cuisines">
+                <mat-option value="Indian">🇮🇳 Indian</mat-option>
+                <mat-option value="Mediterranean">🌿 Mediterranean</mat-option>
+                <mat-option value="Chinese">🥡 Chinese</mat-option>
+                <mat-option value="Italian">🍝 Italian</mat-option>
+                <mat-option value="Mexican">🌮 Mexican</mat-option>
+                <mat-option value="Thai">🍜 Thai</mat-option>
+                <mat-option value="Japanese">🍣 Japanese</mat-option>
+                <mat-option value="Middle Eastern">🧆 Middle Eastern</mat-option>
+                <mat-option value="French">🥖 French</mat-option>
+                <mat-option value="American">🍔 American</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Meal Prep Time</mat-label>
+              <mat-select formControlName="mealPrepTime" placeholder="Meal Prep Time">
+                <mat-option value="Quick">< 15 mins (Quick)</mat-option>
+                <mat-option value="Medium">15–30 mins (Medium)</mat-option>
+                <mat-option value="Long">> 30 mins (Long)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Budget Level</mat-label>
+              <mat-select formControlName="budget" placeholder="Budget">
+                <mat-option value="Low">💸 Low</mat-option>
+                <mat-option value="Medium">💰 Medium</mat-option>
+                <mat-option value="High">💎 High</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="1">
+            <mat-form-field class="full-width">
+              <mat-label>Meals Per Day</mat-label>
+              <mat-select formControlName="mealPerDay" placeholder="Meals Per Day">
+                <mat-option *ngFor="let meals of [1,2,3,4,5,6]" [value]="meals">
+                  {{ meals }} Meal{{ meals > 1 ? 's' : '' }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <button mat-button (click)="saveAll()">Save</button>
+    </mat-expansion-panel>
+  </form>
+
+</mat-accordion>
